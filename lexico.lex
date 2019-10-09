@@ -9,7 +9,7 @@ Variable {Letra} | {Letra}({Alfanumerico})
 CaracterImprimible [\40-\176]
 Caracter {CaracterEscapado}|{CaracterImprimible}
 Texto {caracter}+
- 
+
 %{
 #include <stdio.h>
 %}
@@ -17,9 +17,11 @@ Texto {caracter}+
 %%
 {Digito}+ {printf("Entero %s (%d) \n", yylex,atoi(yytext));}
 {Letra}+ {printf("palabra %s (%c) \n", yylex,yytext);}
-{OperadorBinario}|{OperadorBinario} {printf("Operador %s (%c) \n", yylex,yytext);}
-{Variable} {printf("Variable %s (%c) \n", yylex,yytext);}
 %%
 
+main()
+{ 
+yylex();
+}
 
-main(){yylex();}
+
